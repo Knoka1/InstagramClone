@@ -6,11 +6,13 @@ import styles from './styles';
 const Story = ({item}) => {
   return (
     <View style={styles.storyContainer}>
-      <Avatar.Image
-        style={{marginTop: 3, backgroundColor: 'white'}}
-        source={item.img}
-        size={50}
-      />
+      <View style={[{borderColor: item.new ? 'pink' : 'gray'}, styles.border]}>
+        <Avatar.Image
+          style={{backgroundColor: 'white'}}
+          source={item.img}
+          size={50}
+        />
+      </View>
       <Text style={styles.storyText} numberOfLines={1}>
         {item.text}
       </Text>

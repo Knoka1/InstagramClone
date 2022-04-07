@@ -1,5 +1,7 @@
 import React from 'react';
-import {View, Text, Image, ScrollView, Pressable} from 'react-native';
+import {View, Text, Image, ScrollView, Pressable, Button} from 'react-native';
+import {createDrawerNavigator} from '@react-navigation/drawer';
+import {NavigationContainer} from '@react-navigation/native';
 
 import {Avatar, IconButton} from 'react-native-paper';
 
@@ -14,10 +16,26 @@ const dummyStories = [
     text: 'Guilhermao',
     img: require('../../resources/images/pessoa1.jpeg'),
   },
-  {text: 'bro123', img: require('../../resources/images/pessoa2.jpg')},
-  {text: 'Mar02', img: require('../../resources/images/pessoa3.jpg')},
-  {text: 'joaozinho', img: require('../../resources/images/pessoa4.jpg')},
-  {text: 'Mariozinha', img: require('../../resources/images/pessoa5.jpg')},
+  {
+    text: 'bro123',
+    img: require('../../resources/images/pessoa2.jpg'),
+    new: true,
+  },
+  {
+    text: 'Mar02',
+    img: require('../../resources/images/pessoa3.jpg'),
+    new: true,
+  },
+  {
+    text: 'joaozinho',
+    img: require('../../resources/images/pessoa4.jpg'),
+    new: true,
+  },
+  {
+    text: 'Mariozinha',
+    img: require('../../resources/images/pessoa5.jpg'),
+    new: true,
+  },
   {text: 'Mariozinha', img: require('../../resources/images/pessoa6.jpg')},
 ];
 const dummyPost = [
@@ -32,11 +50,31 @@ const dummyPost = [
     postImg: require('../../resources/images/crosswalk.jpg'),
   },
 ];
+
+function HomeScreen({navigation}) {
+  return (
+    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <Button
+        onPress={() => navigation.navigate('Profiles')}
+        title="Go to profile"
+      />
+    </View>
+  );
+}
+function ProfileScreen({navigation}) {
+  return (
+    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <Button onPress={() => navigation.goBack()} title="Go back home" />
+    </View>
+  );
+}
+const Drawer = createDrawerNavigator();
+
 const Home = ({navigation}) => {
   return (
     <View>
-      <ScrollView>
-        <Header />
+      <Header />
+      <ScrollView contentContainerStyle={{paddingBottom: 120}}>
         <View>
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             <View
@@ -62,15 +100,7 @@ const Home = ({navigation}) => {
           <Post key={i} item={item} navigation={navigation} />
         ))}
       </ScrollView>
-      <View style={styles.row}>
-        <Footer />
-        <View style={styles.row}>
-          <Text>AAAAAAAA</Text>
-        </View>
-        <Text>AAAAAAAA</Text>
-        <Text>AAAAAAAA</Text>
-        <Text>AAAAAAAA</Text>
-      </View>
+      <Footer />
     </View>
   );
 };
