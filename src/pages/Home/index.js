@@ -1,7 +1,6 @@
 import React from 'react';
 import {View, Text, Image, ScrollView, Pressable, Button} from 'react-native';
-import {createDrawerNavigator} from '@react-navigation/drawer';
-import {NavigationContainer} from '@react-navigation/native';
+;
 
 import {Avatar, IconButton} from 'react-native-paper';
 
@@ -50,25 +49,6 @@ const dummyPost = [
     postImg: require('../../resources/images/crosswalk.jpg'),
   },
 ];
-
-function HomeScreen({navigation}) {
-  return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Button
-        onPress={() => navigation.navigate('Profiles')}
-        title="Go to profile"
-      />
-    </View>
-  );
-}
-function ProfileScreen({navigation}) {
-  return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Button onPress={() => navigation.goBack()} title="Go back home" />
-    </View>
-  );
-}
-const Drawer = createDrawerNavigator();
 
 const Home = ({navigation}) => {
   return (
